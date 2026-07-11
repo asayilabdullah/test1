@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASAYIL — UI/UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEEAE2;
+    --panel:#F5F2EA;
+    --ink:#1E2A3A;
+    --muted:#847F71;
+    --gold:#A67C3D;
+    --rule:#D8D3C3;
+    --max:920px;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0; padding:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.85;
+  }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 1.5rem; }
+
+  /* ---------- Seal / monogram ---------- */
+  .seal{
+    width:76px; height:76px; margin:0 auto;
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .seal::before{
+    content:"";
+    position:absolute; inset:6px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    opacity:0.55;
+  }
+  .seal span{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+    font-weight:600;
+    color:var(--gold);
+    line-height:1;
+    transform: translateY(1px);
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    text-align:center;
+    padding:5rem 0 4rem;
+  }
+  .hero .eyebrow{
+    display:block;
+    font-size:0.8rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:1.6rem 0 0.6rem;
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:clamp(2.8rem, 8vw, 4.6rem);
+    margin:0.1rem 0 0.8rem;
+    color:var(--ink);
+    letter-spacing:0.01em;
+  }
+  .hero .tagline{
+    max-width:32rem;
+    margin:0 auto;
+    color:#4B5563;
+    font-size:1.05rem;
+  }
+
+  hr.div{
+    border:none;
+    border-top:1px solid var(--rule);
+    margin:0;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:4rem 0; }
+  .label{
+    display:flex;
+    align-items:center;
+    gap:0.8rem;
+    margin-bottom:2rem;
+  }
+  .label .num{
+    font-family:'Cormorant Garamond', serif;
+    color:var(--gold);
+    font-size:1rem;
+    letter-spacing:0.05em;
+  }
+  .label .txt{
+    font-size:1.4rem;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    letter-spacing:0.02em;
+  }
+  .label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--rule);
+  }
+
+  /* ---------- About ---------- */
+  .about p{
+    max-width:42rem;
+    font-size:1.05rem;
+    color:#33404F;
+  }
+  .about .edit-note{
+    font-size:0.85rem;
+    color:var(--muted);
+    border-left:2px solid var(--gold);
+    padding-left:0.8rem;
+    margin-top:1rem;
+  }
+
+  /* ---------- Skills / Tools ---------- */
+  .grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2.5rem;
+  }
+  .col h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem;
+    margin:0 0 1rem;
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+  .col ul{
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .col li{
+    padding:0.6rem 0;
+    border-bottom:1px solid var(--rule);
+    font-size:0.98rem;
+    color:#33404F;
+  }
+  .col li:last-child{ border-bottom:none; }
+
+  /* ---------- Work ---------- */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1.75rem;
+  }
+  .card{
+    background:var(--panel);
+    border:1px solid var(--rule);
+    padding:1.5rem;
+    position:relative;
+    text-decoration:none;
+    color:inherit;
+    display:block;
+  }
+  .card .frame{
+    aspect-ratio:4/3;
+    border:1px solid var(--rule);
+    margin-bottom:1.2rem;
+    position:relative;
+    background:
+      linear-gradient(135deg, transparent 48%, var(--rule) 49%, var(--rule) 51%, transparent 52%);
+  }
+  .card .tag{
+    position:absolute; top:0.6rem; left:0.6rem;
+    font-family:'Cormorant Garamond', serif;
+    font-size:0.85rem;
+    color:var(--gold);
+    background:var(--panel);
+    padding:0 0.3rem;
+  }
+  .card h4{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.2rem;
+    margin:0 0 0.4rem;
+    font-weight:600;
+  }
+  .card p{
+    font-size:0.92rem;
+    color:var(--muted);
+    margin:0;
+  }
+
+  /* ---------- Contact ---------- */
+  footer{
+    padding:4rem 0 5rem;
+    text-align:center;
+  }
+  footer .seal{ margin-bottom:1.5rem; }
+  footer h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.9rem;
+    margin:0 0 0.5rem;
+    font-weight:600;
+  }
+  footer .links{
+    margin-top:1.4rem;
+    display:flex;
+    gap:1.8rem;
+    justify-content:center;
+    flex-wrap:wrap;
+    font-size:0.95rem;
+  }
+  footer .links a{
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--gold);
+    padding-bottom:2px;
+  }
+  footer .links a:focus-visible,
+  .card:focus-within{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  @media (max-width: 720px){
+    .grid-2, .work-grid{ grid-template-columns:1fr; }
+    header.hero{ padding:3.5rem 0 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="seal"><span>A</span></div>
+  <span class="eyebrow">UI / UX Designer</span>
+  <h1>ASAYIL</h1>
+  <p class="tagline">
+    I design interfaces that simplify decisions before they decorate
+    screens — where clarity meets the finer details.
+  </p>
+</header>
+
+<hr class="div">
+
+<div class="wrap">
+
+  <section class="about">
+    <div class="label"><span class="num">01</span><span class="txt">About</span></div>
+    <p>
+      I design digital experiences that put the user at the center of
+      every decision, from early research through to the final
+      interface. Good design isn't noticed because it draws attention —
+      it's noticed because it simply works.
+    </p>
+  </section>
+
+  <section class="skills">
+    <div class="label"><span class="num">02</span><span class="txt">Skills & Tools</span></div>
+    <div class="grid-2">
+      <div class="col">
+        <h3>Design Skills</h3>
+        <ul>
+          <li>User Research</li>
+          <li>UX Strategy</li>
+          <li>Wireframing</li>
+          <li>Prototyping</li>
+          <li>Design Systems</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Tools</h3>
+        <ul>
+          <li>Figma</li>
+          <li>Adobe XD</li>
+          <li>Illustrator</li>
+          <li>Notion</li>
+          <li>Maze</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="work">
+    <div class="label"><span class="num">03</span><span class="txt">Selected Work</span></div>
+    <p>
+      Most of my work sits at the intersection of finance and everyday
+      habits — redesigning onboarding flows for a personal finance app
+      so new users could link an account without giving up halfway,
+      and rebuilding a cluttered invoicing dashboard into a clean
+      design system a whole product team could actually use without
+      filing a support ticket every week.
+    </p>
+    <p>
+      More recently I worked on a booking platform for a therapy
+      practice, where the real challenge wasn't the visuals at all —
+      it was cutting a nervous, six-step booking process down to
+      something someone could get through in one sitting, on a day
+      when getting through it at all was the hard part.
+    </p>
+
+  </section>
+
+</div>
+
+<hr class="div">
+
+<footer>
+  <div class="seal"><span>A</span></div>
+  <h2>Let's talk about your project</h2>
+  <p style="color:var(--muted); max-width:26rem; margin:0 auto;">
+    Available for freelance and collaborative UI/UX design work.
+  </p>
+  <div class="links">
+    <a href="mailto:theasayil@gmail.com">theasayil@gmail.com</a>
+    <a href="https://www.linkedin.com/in/asayil-alsamani-6342a0314" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
